@@ -10,25 +10,25 @@ public class AboutSteps {
 
     public void clickButtonAboutMainMenu() {
         Allure.step("Нажать кнопку О приложении (About) в Главном меню");
-        aboutPage.getABoutElementButtonAbout
+        aboutPage.BoutElement()
                 .perform(click());
     }
 
     public void clickButtonPrivacyPolicy() {
         Allure.step(" Нажать на ссылку Политика конфиденциальности (Privacy policy).");
-        aboutPage.getABoutElementButtonPrivacyPolicy
+        aboutPage.BoutElementButtonPrivacy()
                 .perform(click());
     }
 
     public void clickButtonTermsOfUse() {
         Allure.step("Нажать на ссылку Пользовательское соглашение (Terms of use).");
-        aboutPage.getABoutElementButtonTermsOfUse
+        aboutPage.BoutElementButtonTerms()
                 .perform(click());
     }
 
     public void clickButtonPressBack() {
         Allure.step("Нажать на ссылку Пользовательское соглашение (Terms of use).");
-        aboutPage.getPressBackButton.
+        aboutPage.PressBack().
                 perform(click());
     }
 

@@ -11,7 +11,7 @@ public class NewsSteps {
 
     public void clickButtonNews() {
         Allure.step("Нажать на кнопку Новости в Главном меню");
-        newsPage.getNewsButton
+        newsPage.NewsButtonLocator()
                 .perform(click());
     }
 }

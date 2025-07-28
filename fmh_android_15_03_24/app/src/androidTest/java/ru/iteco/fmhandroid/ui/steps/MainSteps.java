@@ -22,38 +22,38 @@ public class MainSteps {
 
     public void clickButtonAllNews() {
         Allure.step("Нажать на кнопку ВСЕ НОВОСТИ");
-        mainPage.getMainElementsButtonAllNews
+        mainPage.MainLocatorButtonAllNews()
                 .perform(click());
     }
 
     public void showButtonAllNews() {
         Allure.step("Отобразилась кнопка ВСЕ НОВОСТИ");
-        mainPage.getMainElementsButtonAllNews
+        mainPage.MainLocatorButtonAllNews()
                 .check(matches(withText("ALL NEWS")));
     }
 
     public void clickButtonMainMenu() {
         Allure.step("Нажать на кнопку Главного меню");
-        mainPage.getMainElementsButtonMainMenu
+        mainPage.MainLocatorButtonMainMenu()
                 .perform(click());
     }
 
     public void clickButtonMain() {
         Allure.step("Нажать на кнопку Главная в Главном меню");
-        mainPage.getMainElementsButtonMain
+        mainPage.MainLocatorButtonMain()
                 .perform(click());
     }
 
     public void clickButtonToExpandNews() {
         Allure.step("Нажать на кнопку Свернуть/развернуть ВСЕ НОВОСТИ на Главной странице");
-        mainPage.getMainElementsButtonToRollUpAllNews
+        mainPage.MainLocatorButtonToRollUpAllNews()
                 .perform(click());
     }
 
 
     public void showTitleNewsOnMain() {
         Allure.step(" Отобразилась панель Новости (News)");
-        mainPage.getMainElementsTitleNews
+        mainPage.MainLocatorTitleNews()
                 .check(matches(isDisplayed()));
 
     }

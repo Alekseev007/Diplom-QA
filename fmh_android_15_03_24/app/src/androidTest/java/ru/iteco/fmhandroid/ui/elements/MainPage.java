@@ -6,27 +6,43 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
+import android.view.View;
+
 import androidx.test.espresso.ViewInteraction;
+
+import org.hamcrest.Matcher;
 
 import ru.iteco.fmhandroid.R;
 
 public class MainPage {
-    public ViewInteraction getMainElementsButtonMainMenu;
-    public ViewInteraction getMainElementsButtonMain;
-    public ViewInteraction getMainElementsButtonToRollUpAllNews;
-    public ViewInteraction getMainElementsTitleNews;
-    public ViewInteraction getMainElementsButtonAllNews;
+    private final Matcher<View> MainElementsButtonMainMenu = withId(R.id.main_menu_image_button);
+    private final Matcher<View> MainElementsButtonMain = allOf(withId(android.R.id.title), withText("Main"));
+    private final Matcher<View> MainElementsButtonToRollUpAllNews = withId(R.id.expand_material_button);
+    private final Matcher<View> MainElementsTitleNews = allOf(withText("News"), withParent(withParent(withId(R.id.container_list_news_include_on_fragment_main))));
+    private final Matcher<View> MainElementsButtonAllNews = allOf(withId(R.id.all_news_text_view), withText("ALL NEWS"));
     public int mainMenuButton;
     public int buttonToExpandNews;
     public int allNews;
 
+    public ViewInteraction MainLocatorButtonMainMenu(){
+        return onView(MainElementsButtonMainMenu);
+    }
+    public ViewInteraction MainLocatorButtonMain(){
+        return onView(MainElementsButtonMain);
+    }
+    public ViewInteraction MainLocatorButtonToRollUpAllNews(){
+        return onView(MainElementsButtonToRollUpAllNews);
+    }
+    public ViewInteraction MainLocatorTitleNews(){
+        return onView(MainElementsTitleNews);
+    }
+    public ViewInteraction MainLocatorButtonAllNews(){
+        return onView(MainElementsButtonAllNews);
+    }
+
     public MainPage() {
 
-        getMainElementsButtonMainMenu = onView(withId(R.id.main_menu_image_button));
-        getMainElementsButtonMain = onView(allOf(withId(android.R.id.title), withText("Main")));
-        getMainElementsButtonToRollUpAllNews = onView(withId(R.id.expand_material_button));
-        getMainElementsTitleNews = onView(allOf(withText("News"), withParent(withParent(withId(R.id.container_list_news_include_on_fragment_main)))));
-        getMainElementsButtonAllNews = onView(allOf(withId(R.id.all_news_text_view), withText("ALL NEWS")));
+
         mainMenuButton = R.id.main_menu_image_button;
         buttonToExpandNews = R.id.expand_material_button;
         allNews = R.id.all_news_text_view;

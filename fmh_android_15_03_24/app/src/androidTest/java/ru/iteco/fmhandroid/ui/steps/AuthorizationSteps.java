@@ -32,36 +32,36 @@ public class AuthorizationSteps {
 
     public void clickButtonSignIn() {
         Allure.step("Нажать на кнопку Войти");
-        authorizationPage.getAuthorizationElementsButton
+        authorizationPage.AuthorizationLocatorButton()
                 .perform(click());
     }
 
     public void clickButtonExit() {
         Allure.step("Нажать на кнопку Выход");
-        authorizationPage.getAuthorizationElementsButtonExit
+        authorizationPage.AuthorizationLocatorButtonExit()
                 .perform(click());
     }
 
     public void clickButtonLogOut() {
         Allure.step("Нажать на кнопку для выхода из приложения");
-        authorizationPage.getAuthorizationElementsButtonLogOut
+        authorizationPage.AuthorizationLocatorButtonLogOut()
                 .perform(click());
     }
 
     public void textAuthorization() {
         Allure.step("Отобразилаcь страница Авторизации");
-        authorizationPage.getAuthorizationElementsTextAuthorization
+        authorizationPage.AuthorizationLocatorTextAuthorization()
                 .check(matches(isDisplayed()));
     }
 
     public void fillLoginField(String text) {
         Allure.step("Поле Логин - ввод данных" + text);
-        authorizationPage.getAuthorizationElementsLoginField.perform(replaceText(text));
+        authorizationPage.AuthorizationLocatorLoginField().perform(replaceText(text));
     }
 
     public void fillPasswordField(String text) {
         Allure.step("Поле Пароль - ввод данных" + text);
-        authorizationPage.getAuthorizationElementsPasswordField.perform(replaceText(text));
+        authorizationPage.AuthorizationLocatorPasswordField().perform(replaceText(text));
     }
 
     public static String getLogin() {

@@ -7,18 +7,22 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
+import android.view.View;
+
 import androidx.test.espresso.ViewInteraction;
+
+import org.hamcrest.Matcher;
 
 import ru.iteco.fmhandroid.R;
 
 
 public class AuthorizationPage {
-    public ViewInteraction getAuthorizationElementsButton;
-    public ViewInteraction getAuthorizationElementsLoginField;
-    public ViewInteraction getAuthorizationElementsPasswordField;
-    public ViewInteraction getAuthorizationElementsButtonExit;
-    public ViewInteraction getAuthorizationElementsButtonLogOut;
-    public ViewInteraction getAuthorizationElementsTextAuthorization;
+    private final Matcher<View> AuthorizationElementsButton = withId(R.id.enter_button);
+    private final Matcher<View> AuthorizationElementsLoginField = allOf(withHint("Login"), withParent(withParent(withId(R.id.login_text_input_layout))));
+    private final Matcher<View> AuthorizationElementsPasswordField = allOf(withHint("Password"), withParent(withParent(withId(R.id.password_text_input_layout))));
+    private final Matcher<View> AuthorizationElementsButtonExit = withId(R.id.authorization_image_button);
+    private final Matcher<View> AuthorizationElementsButtonLogOut = allOf(withId(android.R.id.title), withText("Log out"));
+    private final Matcher<View> AuthorizationElementsTextAuthorization = allOf(withText("Authorization"), withParent(withParent(withId(R.id.nav_host_fragment))));
     public int loginField;
     public static String rightLogin;
     public static String rightPassword;
@@ -33,15 +37,29 @@ public class AuthorizationPage {
     public int loginLayout;
     public int enterButton;
 
+    public ViewInteraction AuthorizationLocatorButton(){
+        return onView(AuthorizationElementsButton);
+    }
+    public ViewInteraction AuthorizationLocatorLoginField(){
+        return onView(AuthorizationElementsLoginField);
+    }
+    public ViewInteraction AuthorizationLocatorPasswordField(){
+        return onView(AuthorizationElementsPasswordField);
+    }
+    public ViewInteraction AuthorizationLocatorButtonExit(){
+        return onView(AuthorizationElementsButtonExit);
+    }
+    public ViewInteraction AuthorizationLocatorButtonLogOut(){
+        return onView(AuthorizationElementsButtonLogOut);
+    }
+    public ViewInteraction AuthorizationLocatorTextAuthorization(){
+        return onView(AuthorizationElementsTextAuthorization);
+    }
+
+
+
     public AuthorizationPage() {
 
-
-        getAuthorizationElementsButton = onView(withId(R.id.enter_button));
-        getAuthorizationElementsLoginField = onView(allOf(withHint("Login"), withParent(withParent(withId(R.id.login_text_input_layout)))));
-        getAuthorizationElementsPasswordField = onView(allOf(withHint("Password"), withParent(withParent(withId(R.id.password_text_input_layout)))));
-        getAuthorizationElementsButtonExit = onView(withId(R.id.authorization_image_button));
-        getAuthorizationElementsButtonLogOut = onView(allOf(withId(android.R.id.title), withText("Log out")));
-        getAuthorizationElementsTextAuthorization = onView(allOf(withText("Authorization"), withParent(withParent(withId(R.id.nav_host_fragment)))));
         loginField = R.id.login_text_input_layout;
         rightLogin = "login2";
         rightPassword = "password2";
